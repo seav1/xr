@@ -42,6 +42,12 @@ jobs:
         go env -w CGO_ENABLED=0 GOOS=linux GOARCH=arm64
         go build -v -o xray-linux-arm64 -trimpath -ldflags "-s -w -buildid=" ./main
 
+    - name: Build for AMD64
+      run: |
+        cd Xray-core
+        go env -w CGO_ENABLED=0 GOOS=freebsd GOARCH=amd64
+        go build -v -o xray-freebsd-amd64 -trimpath -ldflags "-s -w -buildid=" ./main
+
     - name: Delete current release assets
       uses: andreaswilli/delete-release-assets-action@v3.0.0
       with:

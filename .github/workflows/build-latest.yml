@@ -18,7 +18,7 @@ jobs:
 
     - name: Clone Xray-core Source
       run: |
-        git clone https://github.com/XTLS/Xray-core
+        git clone https://github.com/seav1/Xray-core
         cd Xray-core
         go mod download
 

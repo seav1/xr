@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Install UPX
-      run: sudo apt-get install upx-ucl
-
     - name: Set up Go
       uses: actions/setup-go@v3
       with:
@@ -38,14 +35,12 @@ jobs:
         cd Xray-core
         go env -w CGO_ENABLED=0 GOOS=linux GOARCH=amd64
         go build -v -o xray-linux-amd64 -trimpath -ldflags "-s -w -buildid=" ./main
-        tar -cJvf xray-linux-amd64.tar.xz xray-linux-amd64
 
     - name: Build for ARM64
       run: |
         cd Xray-core
         go env -w CGO_ENABLED=0 GOOS=linux GOARCH=arm64
         go build -v -o xray-linux-arm64 -trimpath -ldflags "-s -w -buildid=" ./main
-        tar -cJvf xray-linux-arm64.tar.xz xray-linux-arm64
 
     - name: Delete current release assets
       uses: andreaswilli/delete-release-assets-action@v3.0.0

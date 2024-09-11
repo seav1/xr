@@ -39,15 +39,6 @@ jobs:
         go env -w CGO_ENABLED=0 GOOS=linux GOARCH=amd64
         go build -v -o xray-linux-amd64 -trimpath -ldflags "-s -w -buildid=" ./main
         tar -cJvf xray-linux-amd64.tar.xz xray-linux-amd64
-        upx -9 xray-linux-amd64
-        echo "MD5= $(md5sum xray-linux-amd64.tar.xz | awk '{ print $1 }')" > xray-linux-amd64.tar.xz.dgst
-        echo "SHA1= $(sha1sum xray-linux-amd64.tar.xz | awk '{ print $1 }')" >> xray-linux-amd64.tar.xz.dgst
-        echo "SHA2-256= $(sha256sum xray-linux-amd64.tar.xz | awk '{ print $1 }')" >> xray-linux-amd64.tar.xz.dgst
-        echo "SHA2-512= $(sha512sum xray-linux-amd64.tar.xz | awk '{ print $1 }')" >> xray-linux-amd64.tar.xz.dgst
-        echo "MD5= $(md5sum xray-linux-amd64 | awk '{ print $1 }')" > xray-linux-amd64.dgst
-        echo "SHA1= $(sha1sum xray-linux-amd64 | awk '{ print $1 }')" >> xray-linux-amd64.dgst
-        echo "SHA2-256= $(sha256sum xray-linux-amd64 | awk '{ print $1 }')" >> xray-linux-amd64.dgst
-        echo "SHA2-512= $(sha512sum xray-linux-amd64 | awk '{ print $1 }')" >> xray-linux-amd64.dgst
 
     - name: Build for ARM64
       run: |
@@ -55,15 +46,6 @@ jobs:
         go env -w CGO_ENABLED=0 GOOS=linux GOARCH=arm64
         go build -v -o xray-linux-arm64 -trimpath -ldflags "-s -w -buildid=" ./main
         tar -cJvf xray-linux-arm64.tar.xz xray-linux-arm64
-        upx -9 xray-linux-arm64
-        echo "MD5= $(md5sum xray-linux-arm64.tar.xz | awk '{ print $1 }')" > xray-linux-arm64.tar.xz.dgst
-        echo "SHA1= $(sha1sum xray-linux-arm64.tar.xz | awk '{ print $1 }')" >> xray-linux-arm64.tar.xz.dgst
-        echo "SHA2-256= $(sha256sum xray-linux-arm64.tar.xz | awk '{ print $1 }')" >> xray-linux-arm64.tar.xz.dgst
-        echo "SHA2-512= $(sha512sum xray-linux-arm64.tar.xz | awk '{ print $1 }')" >> xray-linux-arm64.tar.xz.dgst
-        echo "MD5= $(md5sum xray-linux-arm64 | awk '{ print $1 }')" > xray-linux-arm64.dgst
-        echo "SHA1= $(sha1sum xray-linux-arm64 | awk '{ print $1 }')" >> xray-linux-arm64.dgst
-        echo "SHA2-256= $(sha256sum xray-linux-arm64 | awk '{ print $1 }')" >> xray-linux-arm64.dgst
-        echo "SHA2-512= $(sha512sum xray-linux-arm64 | awk '{ print $1 }')" >> xray-linux-arm64.dgst
 
     - name: Delete current release assets
       uses: andreaswilli/delete-release-assets-action@v3.0.0

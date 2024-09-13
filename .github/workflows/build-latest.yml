@@ -64,7 +64,7 @@ jobs:
         tag: latest
         body: |
           Latest commit from the main branch:
-          https://github.com/XTLS/Xray-core/commit/${{env.release_commits}}
+          https://github.com/seav1/Xray-core/commit/${{env.release_commits}}
         file_glob: true
         overwrite: true
         file: ./Xray-core/xray-*
